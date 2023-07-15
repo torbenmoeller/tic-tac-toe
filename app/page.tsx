@@ -4,6 +4,7 @@ import BoardUI from "@/app/boardUI";
 import {Mark} from "@/app/game/mark";
 import {Game} from "@/app/game/game";
 import {Board} from "@/app/game/board";
+import MoveHistory from "@/app/moveHistory";
 
 export default function Page() {
     const [game, setGame] = useState<Game>(new Game());
@@ -22,22 +23,6 @@ export default function Page() {
         setBoard(game.currentBoard);
     }
 
-    const moves = game.history.map((squares, move) => {
-        let description
-        if (move > 0) {
-            description = 'Go to move #' + move;
-        } else {
-            description = 'Go to game start';
-        }
-        return (
-            <li key={move}>
-                <button onClick={() => jumpToGameState(move)}>{description}</button>
-            </li>
-        );
-    });
-
-
-
     const winner = game.currentBoard.calculateWinner();
     let status;
     if (winner != Mark.EMPTY) {
@@ -51,10 +36,10 @@ export default function Page() {
             <div className="status">{status}</div>
             <div className="game">
                 <div className="game-board">
-                    <BoardUI board={game.currentBoard} handlePlay={handlePlay}/>
+                    <BoardUI board={board} handlePlay={handlePlay}/>
                 </div>
-                <div className="game-info">
-                    <ol>{moves}</ol>
+                <div className="move-history">
+                    <MoveHistory history={game.history} jumpToGameState={jumpToGameState}/>
                 </div>
             </div>
         </>
