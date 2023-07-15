@@ -2,7 +2,7 @@ import {Mark} from "@/app/game/mark"
 import {Board} from "@/app/game/board"
 
 export class Game {
-    history: Board[] = [new Board()]
+    history = [new Board()]
     currentMove = 0
     xIsNext = true
     currentBoard = this.history[this.currentMove]
