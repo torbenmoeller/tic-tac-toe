@@ -1,10 +1,10 @@
 "use client"
 import {useState} from 'react';
 import BoardUI from "@/app/boardUI";
-import {Mark} from "@/app/game/mark";
 import {Game} from "@/app/game/game";
 import {Board} from "@/app/game/board";
 import MoveHistory from "@/app/moveHistory";
+import CurrentTurn from "@/app/currentTurn";
 
 export default function Page() {
     const [game, setGame] = useState<Game>(new Game());
@@ -23,17 +23,11 @@ export default function Page() {
         setBoard(game.currentBoard);
     }
 
-    const winner = game.currentBoard.calculateWinner();
-    let status;
-    if (winner != Mark.EMPTY) {
-        status = 'Winner: ' + winner;
-    } else {
-        status = 'Next player: ' + (game.xIsNext ? 'X' : 'O');
-    }
-
     return (
         <>
-            <div className="status">{status}</div>
+            <div className="status">
+                <CurrentTurn game={game}/>
+            </div>
             <div className="game">
                 <div className="game-board">
                     <BoardUI board={board} handlePlay={handlePlay}/>
