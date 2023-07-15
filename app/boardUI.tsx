@@ -1,5 +1,4 @@
 import Square from "@/app/square";
-import {Mark} from "@/app/game/mark";
 import {Board} from "@/app/game/board";
 
 export default function BoardUI({ board, handlePlay }:{ board:Board, handlePlay: any }) {

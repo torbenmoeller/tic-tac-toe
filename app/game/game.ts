@@ -1,4 +1,3 @@
-import {useState} from "react";
 import {Mark} from "@/app/game/mark";
 import {Board} from "@/app/game/board";
 
