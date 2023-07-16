@@ -1,7 +1,7 @@
 import Square from "@/app/square"
 import {Board} from "@/app/game/board"
 
-export default function BoardUI({board, handlePlay}: { board: Board, handlePlay: any }) {
+export default function BoardUI({board, handlePlay}: { board: Board, handlePlay: (i: number) => void }) {
     function handleClick(i: number) {
         console.log("Click on square", i)
         handlePlay(i)

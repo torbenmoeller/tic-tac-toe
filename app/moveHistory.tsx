@@ -1,6 +1,9 @@
 import {Board} from "@/app/game/board"
 
-export default function MoveHistory({history, jumpToGameState}: { history: Board[], jumpToGameState: any }) {
+export default function MoveHistory({history, jumpToGameState}: {
+    history: Board[],
+    jumpToGameState: (i: number) => void
+}) {
     const moves = history.map((squares, move) => {
         let description
         if (move > 0) {
